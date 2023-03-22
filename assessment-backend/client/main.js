@@ -5,12 +5,7 @@ const keywordStorage = document.getElementById("keyword");
 const deleteBtn = document.getElementById("delete");
 
 const keywordValue = document.getElementById("keywordValue");
-const deleteValue = document.getElementById("deleteValue");
-
-/*
-been so long since I looked at this, I don't understand how to pass my
-input values to the controller requests
-*/
+const flowerValue = document.getElementById("flowerValue");
 
 const getCompliment = () => {
   axios.get("http://localhost:4000/api/compliment/").then((res) => {
@@ -26,20 +21,27 @@ const getFortune = () => {
   });
 };
 
+// flower still not working entirely correctly
 const putFlower = () => {
-  axios.put("http://localhost:4000/api/:flower").then((res) => {
+  const data = {
+    text: flowerValue.value,
+  };
+
+  axios.put("http://localhost:4000/api/flower", flowerValue).then((res) => {
     const data = res.data;
     alert(data);
   });
 };
 
 const addKeyword = () => {
-  axios
-    .post("http://localhost:4000/api/keyword", keywordValue.value)
-    .then((res) => {
-      const data = res.data;
-      alert("Keyword added");
-    });
+  const data = {
+    text: keywordValue.value,
+  };
+
+  axios.post("http://localhost:4000/api/keyword", data).then((res) => {
+    const data = res.data;
+    alert("Keyword added");
+  });
 };
 
 const deleteKeyword = () => {

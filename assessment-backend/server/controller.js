@@ -31,29 +31,25 @@ module.exports = {
   },
 
   putFlower: (req, res) => {
-    const flower = [];
-    flower.push(req.body);
+    const flower = req.body;
+    console.log(req.body);
+    console.log(flower);
 
     if (flower) {
-      res.status(200).send(`You added ${JSON.stringify(req.body)}`);
+      res.status(200).send(`You edited ${flower}`);
     } else {
       res.status(400).send("that is incorrect");
     }
   },
 
   addKeyword: (req, res) => {
-    console.log(req.body);
     keyword.push(req.body);
-    // console.log(keyword);
+    console.log(keyword);
     res.status(200).send(req.body);
   },
 
   deleteKeyword: (req, res) => {
-    if (keyword.includes(req.body)) {
-      keyword.filter((words) => !req.body);
-      res.status(200).send("Keyword removed");
-    } else {
-      res.status(400).send("Keyword does not exist");
-    }
+    keyword.length = 0;
+    res.status(200).send("Keywords removed");
   },
 };

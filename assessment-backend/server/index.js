@@ -19,7 +19,7 @@ app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
 
 app.post("/api/:keyword", addKeyword);
-app.put("/api/:flower", putFlower);
+app.put("/api/flower", putFlower);
 app.delete("/api/:keyword", deleteKeyword);
 
 app.listen(4000, () => console.log("Server running on 4000"));
